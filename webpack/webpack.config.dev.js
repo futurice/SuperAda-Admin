@@ -40,7 +40,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      title: 'redux-react-starter',
+      title: 'Super-Ada Admin',
       template: '../webpack/template.html',
     }),
   ],

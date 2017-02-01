@@ -1,7 +1,7 @@
 {
-  "name": "frontend-hipster-kit",
+  "name": "SuperAda-Admin",
   "version": "1.0.0",
-  "description": "Get started with frontend development",
+  "description": "Admin frontend for the SuperAda event",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
     "start-nobrowser": "webpack-dev-server --config webpack/webpack.config.dev.js",
@@ -13,19 +13,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FruitieX/frontend-hipster-kit.git"
+    "url": "git+https://github.com/futurice/SuperAda-Admin.git"
   },
   "keywords": [
     "react",
     "redux",
     "async"
   ],
-  "author": "FruitieX",
+  "author": "futurice",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FruitieX/frontend-hipster-kit/issues"
+    "url": "https://github.com/futurice/SuperAda-Admin/issues"
   },
-  "homepage": "https://github.com/FruitieX/frontend-hipster-kit#readme",
+  "homepage": "https://github.com/futurice/SuperAda-Admin#readme",
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.0.0",

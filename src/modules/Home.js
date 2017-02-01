@@ -44,13 +44,8 @@ const Home = ({ experts }) => (
   </div>
 )
 
-Home.propTypes = {
-  experts: React.PropTypes.array.isRequired,
-}
-
 export default connect(
   (state) => ({
-    experts: state.experts.data,
   }),
   (dispatch) => ({
   }),

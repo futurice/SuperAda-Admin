@@ -19,8 +19,15 @@ const rest = reduxApi({
       method: 'POST'
     }
   },
-  experts: {
-    url: `${config.API_ROOT}/experts`,
+  teams: {
+    reducerName: 'teams',
+    url: `${config.API_ROOT}/teams`,
+    transformer: transformers.array,
+    crud: true,
+  },
+  team: {
+    reducerName: 'teams',
+    url: `${config.API_ROOT}/teams/:teamId`,
     transformer: transformers.array,
     crud: true,
   },

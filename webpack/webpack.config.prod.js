@@ -47,7 +47,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'redux-react-starter',
+      title: 'Super-Ada Admin',
       template: 'webpack/template.html',
     }),
     new OfflinePlugin({
