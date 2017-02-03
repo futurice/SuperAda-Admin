@@ -10,7 +10,6 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import theme from '../utils/theme';
-import HomeCard from '../components/HomeCard';
 import rest from '../utils/rest';
 
 import CreateTeamDialog from './CreateTeamDialog';
