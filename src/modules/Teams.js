@@ -12,8 +12,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import theme from '../utils/theme';
 import rest from '../utils/rest';
 
-import CreateTeamDialog from './CreateTeamDialog';
-import DeleteTeamDialog from './DeleteTeamDialog';
+import DialogWithButtons from '../components/DialogWithButtons';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
@@ -70,15 +69,24 @@ class Teams extends React.Component {
 
     return (
       <div>
-        <CreateTeamDialog
+        <DialogWithButtons
+          title={formatMessage({id: 'addTeam'})}
+          textField={{
+            label: formatMessage({id: 'teamName'}),
+            textAfter: formatMessage({id: 'teamNameNote'}),
+          }}
+          submitAction={formatMessage({id: 'addTeam'})}
+          description={formatMessage({id: 'addTeamDescription'})}
           isOpen={createDialogOpen}
           submit={(team) => createTeam(team)}
           close={() => this.closeDialog('create')}
         />
-        <DeleteTeamDialog
+        <DialogWithButtons
+          title={formatMessage({id: 'deleteTeamWithName'}, {name: selectedTeam.teamName})}
+          submitAction={formatMessage({id: 'deleteTeam'})}
+          description={formatMessage({id: 'deleteTeamConfirmation'}, {name: selectedTeam.teamName})}
           isOpen={deleteDialogOpen}
-          team={selectedTeam}
-          submit={(team) => deleteTeam(team)}
+          submit={() => deleteTeam(selectedTeam)}
           close={() => this.closeDialog('delete')}
         />
         <Table selectable={false}>
@@ -130,8 +138,8 @@ export default injectIntl(connect(
     refresh: () => {
       dispatch(rest.actions.teams());
     },
-    createTeam: (teamName) => {
-      dispatch(rest.actions.teams.post(null, { body: JSON.stringify({ teamName }) }));
+    createTeam: (data) => {
+      dispatch(rest.actions.teams.post(null, { body: JSON.stringify({ teamName: data.value }) }));
     },
     deleteTeam: (team) => {
       dispatch(rest.actions.team.delete({ teamId: team.teamId }));
