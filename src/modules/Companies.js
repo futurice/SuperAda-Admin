@@ -102,8 +102,7 @@ class Companies extends React.Component {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn style={styles.deleteStyle} />
-              <TableHeaderColumn style={styles.logoStyle}></TableHeaderColumn>
-              <TableHeaderColumn>Company name</TableHeaderColumn>
+              <TableHeaderColumn>Company</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
