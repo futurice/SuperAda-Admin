@@ -86,7 +86,8 @@ class Teams extends React.Component {
               <TableHeaderColumn style={styles.deleteStyle} />
               <TableHeaderColumn>Team name</TableHeaderColumn>
               <TableHeaderColumn>Slogan</TableHeaderColumn>
-              <TableHeaderColumn>Total points</TableHeaderColumn>
+              <TableHeaderColumn>Company points</TableHeaderColumn>
+              <TableHeaderColumn>Quiz points</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
@@ -101,6 +102,7 @@ class Teams extends React.Component {
                   <TableRowColumn>{team.teamName}</TableRowColumn>
                   <TableRowColumn>{team.description}</TableRowColumn>
                   <TableRowColumn>{team.points || 0}</TableRowColumn>
+                  <TableRowColumn>{team.quizpoints || 0}</TableRowColumn>
                 </TableRow>
               ))
             }
