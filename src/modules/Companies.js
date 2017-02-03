@@ -83,7 +83,7 @@ class Companies extends React.Component {
         <DialogWithButtons
           title={`Delete company '${ selectedCompany.companyName }'?`}
           submitAction='Delete'
-          description={`Are you sure you want to delete the '{ selectedCompany.companyName}' company? Note that all points they have given to teams will also be lost!`}
+          description={`Are you sure you want to delete the '${ selectedCompany.companyName }' company? Note that all points they have given to teams will also be lost!`}
           isOpen={deleteDialogOpen}
           submit={() => deleteCompany(selectedCompany)}
           close={() => this.closeDialog('delete')}
