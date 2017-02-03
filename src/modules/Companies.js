@@ -14,6 +14,8 @@ import rest from '../utils/rest';
 
 import DialogWithButtons from '../components/DialogWithButtons';
 
+import { injectIntl, FormattedMessage } from 'react-intl';
+
 import config from 'config';
 
 const styles = {
@@ -70,30 +72,30 @@ class Companies extends React.Component {
   }
 
   render() {
-    const { companies, createCompany, deleteCompany } = this.props;
+    const { companies, createCompany, deleteCompany, intl: { formatMessage } } = this.props;
     const { deleteDialogOpen, createDialogOpen, selectedCompany } = this.state;
 
     return (
       <div>
         <DialogWithButtons
-          title='Add company'
+          title={formatMessage({id: 'addCompany'})}
           textField={{
-            label: 'Company name',
-            textAfter: 'Note that this will be the (case-sensitive!) login name for the company.',
+            label: formatMessage({id: 'companyName'}),
+            textAfter: formatMessage({id: 'companyNameNote'}),
           }}
           imageUpload={{
-            label: 'Select company logo'
+            label: formatMessage({id: 'companyLogo'})
           }}
-          submitAction='Add company'
-          description='Create a new company which will participate in the event:'
+          submitAction={formatMessage({id: 'addCompany'})}
+          description={formatMessage({id: 'addCompanyDescription'})}
           isOpen={createDialogOpen}
           submit={(company) => createCompany(company)}
           close={() => this.closeDialog('create')}
         />
         <DialogWithButtons
-          title={`Delete company '${ selectedCompany.companyName }'?`}
-          submitAction='Delete'
-          description={`Are you sure you want to delete the '${ selectedCompany.companyName }' company? Note that all points they have given to teams will also be lost!`}
+          title={formatMessage({id: 'deleteCompanyWithName'}, {name: selectedCompany.companyName})}
+          submitAction={formatMessage({id: 'deleteCompany'})}
+          description={formatMessage({id: 'deleteCompanyConfirmation'}, {name: selectedCompany.companyName})}
           isOpen={deleteDialogOpen}
           submit={() => deleteCompany(selectedCompany)}
           close={() => this.closeDialog('delete')}
@@ -102,7 +104,7 @@ class Companies extends React.Component {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn style={styles.deleteStyle} />
-              <TableHeaderColumn>Company</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'company'})}</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
@@ -136,7 +138,7 @@ Companies.propTypes = {
   refresh: React.PropTypes.func.isRequired,
 }
 
-export default connect(
+export default injectIntl(connect(
   (state) => ({
     companies: state.companies.data,
   }),
@@ -165,4 +167,4 @@ export default connect(
       dispatch(rest.actions.company.delete({ companyId: company.companyId }));
     }
   }),
-)(Companies)
+)(Companies))

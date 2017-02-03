@@ -15,6 +15,8 @@ import rest from '../utils/rest';
 import CreateTeamDialog from './CreateTeamDialog';
 import DeleteTeamDialog from './DeleteTeamDialog';
 
+import { injectIntl, FormattedMessage } from 'react-intl';
+
 const styles = {
   deleteStyle: {
     width: '20px'
@@ -63,7 +65,7 @@ class Teams extends React.Component {
   }
 
   render() {
-    const { teams, createTeam, deleteTeam } = this.props;
+    const { teams, createTeam, deleteTeam, intl: { formatMessage } } = this.props;
     const { deleteDialogOpen, createDialogOpen, selectedTeam } = this.state;
 
     return (
@@ -83,10 +85,10 @@ class Teams extends React.Component {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn style={styles.deleteStyle} />
-              <TableHeaderColumn>Team name</TableHeaderColumn>
-              <TableHeaderColumn>Slogan</TableHeaderColumn>
-              <TableHeaderColumn>Company points</TableHeaderColumn>
-              <TableHeaderColumn>Quiz points</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'teamName'})}</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'teamSlogan'})}</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'teamCompanyPoints'})}</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'teamQuizPoints'})}</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
@@ -120,7 +122,7 @@ Teams.propTypes = {
   refresh: React.PropTypes.func.isRequired,
 }
 
-export default connect(
+export default injectIntl(connect(
   (state) => ({
     teams: state.teams.data,
   }),
@@ -135,4 +137,4 @@ export default connect(
       dispatch(rest.actions.team.delete({ teamId: team.teamId }));
     }
   }),
-)(Teams)
+)(Teams))
