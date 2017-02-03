@@ -4,12 +4,15 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
+import ImageUpload from '../components/ImageUpload'
+
 class DialogWithButtons extends React.Component {
   constructor(props) {
    super(props);
 
    this.state = {
      value: '',
+     file: null
    };
  }
 
@@ -17,7 +20,7 @@ class DialogWithButtons extends React.Component {
     const { submit, close } = this.props;
 
     if (event.keyCode == 13) {
-      submit(this.state.value)
+      submit(this.state)
       close()
     }
   };
@@ -28,8 +31,23 @@ class DialogWithButtons extends React.Component {
     });
   };
 
+  setImageUrl = (file) => {
+    this.setState({
+      file
+    })
+  };
+
   render () {
-    const { title, submitAction, submit, close, isOpen, description, textField } = this.props;
+    const {
+      title,
+      imageUpload,
+      submitAction,
+      submit,
+      close,
+      isOpen,
+      description,
+      textField
+    } = this.props;
 
     return (
       <Dialog
@@ -44,8 +62,11 @@ class DialogWithButtons extends React.Component {
             label={ submitAction }
             primary={true}
             keyboardFocused={true}
-            disabled={textField && !this.state.value}
-            onTouchTap={() => (submit(this.state.value) || close())}
+            disabled={(textField && !this.state.value) || (imageUpload && !this.state.file)}
+            onTouchTap={() => {
+              submit(this.state);
+              close();
+            }}
           />,
         ]}
         modal={false}
@@ -59,7 +80,7 @@ class DialogWithButtons extends React.Component {
         { textField ?
           <div>
             <TextField
-              floatingLabelText="Team name"
+              floatingLabelText={textField.label}
               value={this.state.value}
               onChange={this.handleChange}
               autoFocus={true}
@@ -74,6 +95,14 @@ class DialogWithButtons extends React.Component {
           { textField && textField.textAfter }
         </p>
 
+        { imageUpload ?
+          <div>
+            <ImageUpload setImageUrl={this.setImageUrl} label={imageUpload.label}/>
+          </div>
+          :
+          null
+        }
+
       </Dialog>
     );
   }
@@ -81,8 +110,11 @@ class DialogWithButtons extends React.Component {
 
 DialogWithButtons.propTypes = {
   textField: React.PropTypes.shape({
-    label: React.PropTypes.string,
-    textAfter: React.PropTypes.string,
+    label: React.PropTypes.string.isRequired,
+    textAfter: React.PropTypes.string.isRequired,
+  }),
+  imageUpload: React.PropTypes.shape({
+    label: React.PropTypes.string.isRequired,
   }),
   title: React.PropTypes.string.isRequired,
   submitAction: React.PropTypes.string.isRequired,

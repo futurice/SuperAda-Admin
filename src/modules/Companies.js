@@ -15,9 +15,17 @@ import rest from '../utils/rest';
 
 import DialogWithButtons from '../components/DialogWithButtons';
 
+import config from 'config';
+
 const styles = {
   deleteStyle: {
-    width: '20px'
+    width: 20
+  },
+  logoStyle: {
+    width: 32,
+    height: 'auto',
+    paddingVertical: 'auto',
+    paddingRight: 0
   },
   wrapper: {
     display: 'flex',
@@ -74,6 +82,9 @@ class Companies extends React.Component {
             label: 'Company name',
             textAfter: 'Note that this will be the (case-sensitive!) login name for the company.',
           }}
+          imageUpload={{
+            label: 'Select company logo'
+          }}
           submitAction='Add company'
           description='Create a new company which will participate in the event:'
           isOpen={createDialogOpen}
@@ -92,9 +103,8 @@ class Companies extends React.Component {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn style={styles.deleteStyle} />
+              <TableHeaderColumn style={styles.logoStyle}></TableHeaderColumn>
               <TableHeaderColumn>Company name</TableHeaderColumn>
-              <TableHeaderColumn>Slogan</TableHeaderColumn>
-              <TableHeaderColumn>Total points</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
@@ -106,9 +116,10 @@ class Companies extends React.Component {
                       <TrashIcon />
                     </IconButton>
                   </TableRowColumn>
+                  <TableRowColumn style={styles.logoStyle}>
+                    <img src={`${config.API_ROOT}/public/company${company.companyId}.png`} style={styles.logoStyle} />
+                  </TableRowColumn>
                   <TableRowColumn>{company.companyName}</TableRowColumn>
-                  <TableRowColumn>{company.description}</TableRowColumn>
-                  <TableRowColumn>{company.points || 0}</TableRowColumn>
                 </TableRow>
               ))
             }
@@ -135,8 +146,22 @@ export default connect(
     refresh: () => {
       dispatch(rest.actions.companies());
     },
-    createCompany: (companyName) => {
-      dispatch(rest.actions.companies.post(null, { body: JSON.stringify({ companyName }) }));
+    createCompany: (data) => {
+      const companyName = data.value;
+      const file = data.file;
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        dispatch(rest.actions.companies.post(null, {
+          body: JSON.stringify({
+            companyName,
+            logo: e.currentTarget.result,
+          })
+        }));
+      };
+
+      reader.readAsDataURL(file);
     },
     deleteCompany: (company) => {
       dispatch(rest.actions.company.delete({ companyId: company.companyId }));
