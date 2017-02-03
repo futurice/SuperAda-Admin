@@ -31,6 +31,18 @@ const rest = reduxApi({
     transformer: transformers.array,
     crud: true,
   },
+  companies: {
+    reducerName: 'companies',
+    url: `${config.API_ROOT}/companies`,
+    transformer: transformers.array,
+    crud: true,
+  },
+  company: {
+    reducerName: 'companies',
+    url: `${config.API_ROOT}/company/:companyId`,
+    transformer: transformers.array,
+    crud: true,
+  },
   // Add more API endpoints here! Examples below:
 
   /*
