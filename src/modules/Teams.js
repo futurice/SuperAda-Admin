@@ -27,7 +27,7 @@ const styles = {
     padding: theme.spacing.desktopGutter,
   },
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     right: 20,
     bottom: 20,
   }
