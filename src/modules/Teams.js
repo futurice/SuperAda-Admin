@@ -121,7 +121,7 @@ class Teams extends React.Component {
                   <TableRowColumn style={styles.logoStyle}>
                     <ReactImageFallback
                       src={`${config.API_ROOT}/public/team${team.teamId}.png`} style={styles.logoStyle}
-                      fallbackImage="no_profile_pic.png"
+                      fallbackImage={require("../../assets/no_profile_pic.png")}
                     />
                   </TableRowColumn>
                   <TableRowColumn>{team.teamName}</TableRowColumn>

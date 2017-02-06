@@ -120,7 +120,7 @@ class Companies extends React.Component {
                   <TableRowColumn style={styles.logoStyle}>
                     <ReactImageFallback
                       src={`${config.API_ROOT}/public/company${company.companyId}.png`} style={styles.logoStyle}
-                      fallbackImage="no_company_pic.png"
+                      fallbackImage={require("../../assets/no_company_pic.png")}
                     />
                   </TableRowColumn>
                   <TableRowColumn>{company.companyName}</TableRowColumn>
