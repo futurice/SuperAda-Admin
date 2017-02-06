@@ -16,6 +16,7 @@ import DialogWithButtons from '../components/DialogWithButtons';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
+import ReactImageFallback from 'react-image-fallback';
 import config from 'config';
 
 const styles = {
@@ -117,7 +118,10 @@ class Companies extends React.Component {
                     </IconButton>
                   </TableRowColumn>
                   <TableRowColumn style={styles.logoStyle}>
-                    <img src={`${config.API_ROOT}/public/company${company.companyId}.png`} style={styles.logoStyle} />
+                    <ReactImageFallback
+                      src={`${config.API_ROOT}/public/company${company.companyId}.png`} style={styles.logoStyle}
+                      fallbackImage="no_company_pic.png"
+                    />
                   </TableRowColumn>
                   <TableRowColumn>{company.companyName}</TableRowColumn>
                 </TableRow>

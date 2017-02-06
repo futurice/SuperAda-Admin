@@ -16,9 +16,18 @@ import DialogWithButtons from '../components/DialogWithButtons';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
+import ReactImageFallback from 'react-image-fallback';
+import config from 'config';
+
 const styles = {
   deleteStyle: {
     width: '20px'
+  },
+  logoStyle: {
+    width: 32,
+    height: 'auto',
+    paddingVertical: 'auto',
+    paddingRight: 0
   },
   wrapper: {
     display: 'flex',
@@ -93,6 +102,7 @@ class Teams extends React.Component {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn style={styles.deleteStyle} />
+              <TableRowColumn style={styles.logoStyle}></TableRowColumn>
               <TableHeaderColumn>{formatMessage({id: 'teamName'})}</TableHeaderColumn>
               <TableHeaderColumn>{formatMessage({id: 'teamSlogan'})}</TableHeaderColumn>
               <TableHeaderColumn>{formatMessage({id: 'teamCompanyPoints'})}</TableHeaderColumn>
@@ -107,6 +117,12 @@ class Teams extends React.Component {
                     <IconButton onTouchTap={() => this.openDialog('delete', team)}>
                       <TrashIcon />
                     </IconButton>
+                  </TableRowColumn>
+                  <TableRowColumn style={styles.logoStyle}>
+                    <ReactImageFallback
+                      src={`${config.API_ROOT}/public/team${team.teamId}.png`} style={styles.logoStyle}
+                      fallbackImage="no_profile_pic.png"
+                    />
                   </TableRowColumn>
                   <TableRowColumn>{team.teamName}</TableRowColumn>
                   <TableRowColumn>{team.description}</TableRowColumn>
