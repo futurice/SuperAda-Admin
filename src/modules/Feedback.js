@@ -7,7 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import TrashIcon from 'material-ui/svg-icons/action/delete';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import theme from '../utils/theme';
@@ -35,11 +34,6 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     padding: theme.spacing.desktopGutter,
-  },
-  fab: {
-    position: 'fixed',
-    right: 20,
-    bottom: 20,
   },
   bold: {
     fontWeight: 'bold',
@@ -149,9 +143,6 @@ class Feedback extends React.Component {
             }
           </TableBody>
         </Table>
-        <FloatingActionButton onTouchTap={() => this.openDialog('view')} style={styles.fab}>
-          <ContentAdd />
-        </FloatingActionButton>
       </div>
     );
   }
