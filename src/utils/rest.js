@@ -43,6 +43,18 @@ const rest = reduxApi({
     transformer: transformers.array,
     crud: true,
   },
+  allFeedback: {
+    reducerName: 'feedback',
+    url: `${config.API_ROOT}/admin/feedback`,
+    transformer: transformers.array,
+    crud: true,
+  },
+  feedback: {
+    reducerName: 'feedback',
+    url: `${config.API_ROOT}/admin/feedback/:teamId`,
+    transformer: transformers.array,
+    crud: true,
+  },
   // Add more API endpoints here! Examples below:
 
   /*

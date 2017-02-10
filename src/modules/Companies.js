@@ -88,6 +88,7 @@ class Companies extends React.Component {
             label: formatMessage({id: 'companyLogo'}),
             textAfter: formatMessage({id: 'companyLogoNote'}),
           }}
+          cancelAction={formatMessage({id: 'cancel'})}
           submitAction={formatMessage({id: 'addCompany'})}
           description={formatMessage({id: 'addCompanyDescription'})}
           isOpen={createDialogOpen}
@@ -96,6 +97,7 @@ class Companies extends React.Component {
         />
         <DialogWithButtons
           title={formatMessage({id: 'deleteCompanyWithName'}, {name: selectedCompany.companyName})}
+          cancelAction={formatMessage({id: 'cancel'})}
           submitAction={formatMessage({id: 'deleteCompany'})}
           description={formatMessage({id: 'deleteCompanyConfirmation'}, {name: selectedCompany.companyName})}
           isOpen={deleteDialogOpen}

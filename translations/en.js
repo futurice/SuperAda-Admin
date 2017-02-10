@@ -5,6 +5,11 @@ export default {
   Companies: 'Companies',
   Preferences: 'Preferences',
   Logout: 'Logout',
+  Feedback: 'Feedback',
+
+  // General
+  cancel: 'Cancel',
+  ok: 'OK',
 
   // Team view
   team: 'Team',
@@ -36,4 +41,11 @@ export default {
   resetState: 'Reset admin app state',
   resetStateExplanation: 'Use this if you experience problems with the admin app. Only affects your session.',
   resetStateButton: 'Clear app state',
+
+  // Feedback view
+  showFeedback: 'Show feedback',
+  viewFeedbackWithName: 'Feedback from team \'{name}\':',
+  deleteFeedbackWithName: 'Delete feedback by team \'{name}\'?',
+  deleteFeedbackConfirmation: 'Are you sure you want to delete the feedback given by team \'{name}\'?',
+  deleteFeedback: 'Delete feedback',
 };

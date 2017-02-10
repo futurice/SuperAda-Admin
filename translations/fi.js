@@ -6,6 +6,11 @@ export default {
   Home: 'Koti',
   Preferences: 'Asetukset',
   Logout: 'Kirjaudu ulos',
+  Feedback: 'Palaute',
+
+  // General
+  cancel: 'Peruuta',
+  ok: 'OK',
 
   // Team view
   team: 'Joukkue',
@@ -37,4 +42,11 @@ export default {
   resetState: 'Nollaa admin-sovelluksen tila',
   resetStateExplanation: 'Käytä tätä toimintoa jos huomaat ongelmia admin sovelluksen toiminnassa. Vaikuttaa ainoastaan sinun sessioon.',
   resetStateButton: 'Nollaa tila',
+
+  // Feedback view
+  showFeedback: 'Näytä palaute',
+  viewFeedbackWithName: 'Palaute joukkueelta \'{name}\':',
+  deleteFeedbackWithName: 'Poista palaute joukkueelta \'{name}\'?',
+  deleteFeedbackConfirmation: 'Haluatko varmasti poistaa jokkueen \'{name}\' antama palaute?',
+  deleteFeedback: 'Poista palaute',
 };

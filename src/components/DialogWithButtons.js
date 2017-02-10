@@ -41,6 +41,7 @@ class DialogWithButtons extends React.Component {
     const {
       title,
       imageUpload,
+      cancelAction,
       submitAction,
       submit,
       close,
@@ -54,7 +55,7 @@ class DialogWithButtons extends React.Component {
         title={ title }
         actions={[
           <FlatButton
-            label="Cancel"
+            label={ cancelAction }
             primary={true}
             onTouchTap={close}
           />,
@@ -123,6 +124,7 @@ DialogWithButtons.propTypes = {
     textAfter: React.PropTypes.string,
   }),
   title: React.PropTypes.string.isRequired,
+  cancelAction: React.PropTypes.string.isRequired,
   submitAction: React.PropTypes.string.isRequired,
   description: React.PropTypes.string,
   submit: React.PropTypes.func.isRequired,
