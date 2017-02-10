@@ -26,6 +26,7 @@ export default {
   companyName: 'Yrityksen nimi',
   companyNameNote: 'Huomaa että yrityksen tulee käyttää täsmälleen tätä nimeä kirjautuessaan sisään.',
   companyLogo: 'Valitse yrityksen logo',
+  companyLogoNote: '(Täytyy olla 180x180 kuvapistettä)',
   addCompanyDescription: 'Lisää uusi yritys tapahtumaan',
   deleteCompany: 'Poista',
   deleteCompanyWithName: 'Poista yritys \'{name}\'?',

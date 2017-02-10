@@ -104,6 +104,10 @@ class DialogWithButtons extends React.Component {
           null
         }
 
+        <p>
+          { imageUpload && imageUpload.textAfter }
+        </p>
+
       </Dialog>
     );
   }
@@ -112,10 +116,11 @@ class DialogWithButtons extends React.Component {
 DialogWithButtons.propTypes = {
   textField: React.PropTypes.shape({
     label: React.PropTypes.string.isRequired,
-    textAfter: React.PropTypes.string.isRequired,
+    textAfter: React.PropTypes.string,
   }),
   imageUpload: React.PropTypes.shape({
     label: React.PropTypes.string.isRequired,
+    textAfter: React.PropTypes.string,
   }),
   title: React.PropTypes.string.isRequired,
   submitAction: React.PropTypes.string.isRequired,

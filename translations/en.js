@@ -25,6 +25,7 @@ export default {
   companyName: 'Company name',
   companyNameNote: 'Note that this will be the (case-sensitive!) login name for the company.',
   companyLogo: 'Select company logo',
+  companyLogoNote: '(Must be 180x180 pixels)',
   addCompanyDescription: 'Add a new company which will participate in the event:',
   deleteCompany: 'Delete',
   deleteCompanyWithName: 'Delete company \'{name}\'?',

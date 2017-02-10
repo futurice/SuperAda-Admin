@@ -85,7 +85,8 @@ class Companies extends React.Component {
             textAfter: formatMessage({id: 'companyNameNote'}),
           }}
           imageUpload={{
-            label: formatMessage({id: 'companyLogo'})
+            label: formatMessage({id: 'companyLogo'}),
+            textAfter: formatMessage({id: 'companyLogoNote'}),
           }}
           submitAction={formatMessage({id: 'addCompany'})}
           description={formatMessage({id: 'addCompanyDescription'})}
