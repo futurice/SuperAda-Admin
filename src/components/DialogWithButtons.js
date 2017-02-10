@@ -72,6 +72,7 @@ class DialogWithButtons extends React.Component {
         modal={false}
         open={isOpen}
         onRequestClose={close}
+        autoScrollBodyContent={true}
       >
         <div>
           { description }
