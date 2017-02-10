@@ -29,7 +29,7 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|json)$/,
         use: 'file-loader'
       },
     ],
@@ -52,6 +52,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       title: 'Super-Ada Admin',
+      favicon: 'assets/favicon.ico',
       template: 'webpack/template.html',
     }),
     new OfflinePlugin({
