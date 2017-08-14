@@ -109,6 +109,7 @@ class Teams extends React.Component {
               <TableHeaderColumn>{formatMessage({id: 'teamSlogan'})}</TableHeaderColumn>
               <TableHeaderColumn>{formatMessage({id: 'teamCompanyPoints'})}</TableHeaderColumn>
               <TableHeaderColumn>{formatMessage({id: 'teamQuizPoints'})}</TableHeaderColumn>
+              <TableHeaderColumn>{formatMessage({id: 'teamCheckpointsCompleted'})}</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
@@ -130,6 +131,7 @@ class Teams extends React.Component {
                   <TableRowColumn>{team.description}</TableRowColumn>
                   <TableRowColumn>{team.points || 0}</TableRowColumn>
                   <TableRowColumn>{team.quizpoints || 0}</TableRowColumn>
+                  <TableRowColumn>{team.checkpointsCompleted || 0}</TableRowColumn>
                 </TableRow>
               ))
             }

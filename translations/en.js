@@ -19,6 +19,7 @@ export default {
   teamSlogan: 'Slogan',
   teamCompanyPoints: 'Company points',
   teamQuizPoints: 'Quiz points',
+  teamCheckpointsCompleted: 'Checkpoints completed',
   addTeamDescription: 'Add a new team which will participate in the event:',
   deleteTeam: 'Delete',
   deleteTeamWithName: 'Delete team \'{name}\'?',

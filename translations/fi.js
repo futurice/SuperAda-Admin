@@ -20,6 +20,7 @@ export default {
   teamSlogan: 'Slogan',
   teamCompanyPoints: 'Pisteitä yrityksiltä',
   teamQuizPoints: 'Quiz pisteitä',
+  teamCheckpointsCompleted: 'Checkpointteja suoritettu',
   addTeamDescription: 'Lisää uusi joukkue tapahtumaan:',
   deleteTeam: 'Poista',
   deleteTeamWithName: 'Poista joukkue \'{name}\'?',
