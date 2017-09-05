@@ -1,6 +1,7 @@
 import Teams from '../modules/Teams';
 import Companies from '../modules/Companies';
 import Feedback from '../modules/Feedback';
+import MapPage from '../modules/Map';
 import Preferences from '../modules/Preferences';
 import Logout from '../modules/Logout';
 
@@ -26,6 +27,11 @@ export default [{
   name: 'Feedback',
   component: Feedback,
   icon: FeedbackIcon,
+}, {
+  path: '/map',
+  name: 'Map',
+  component: MapPage,
+  icon: FeedbackIcon
 }, {
   path: '/preferences',
   name: 'Preferences',
