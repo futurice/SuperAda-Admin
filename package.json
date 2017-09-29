@@ -57,6 +57,8 @@
     "material-ui": "^0.16.7",
     "offline-plugin": "^4.5.5",
     "react": "^15.4.1",
+    "react-dnd": "^2.5.1",
+    "react-dnd-html5-backend": "^2.5.1",
     "react-dom": "^15.4.1",
     "react-image-fallback": "^4.0.1",
     "react-intl": "^2.2.3",

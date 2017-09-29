@@ -5,6 +5,8 @@ import config from 'config';
 
 import { showError } from '../modules/ErrorSnackbar';
 
+export const MOVE_COMPANY_SHORTCIRCUIT = 'MOVE_COMPANY_SHORTCIRCUIT';
+
 let store;
 
 export const injectStore = (_store) => {
@@ -36,6 +38,22 @@ const rest = reduxApi({
     url: `${config.API_ROOT}/admin/companies`,
     transformer: transformers.array,
     crud: true,
+    reducer(state, action) {
+      if(action.type === MOVE_COMPANY_SHORTCIRCUIT) {
+        var newState = Object.assign({}, state);
+        if(newState.data !== undefined) {
+          newState.data = newState.data.map((company, index) => {
+            if(company.companyId === action.id) {
+              company.positionX = action.x;
+              company.positionY = action.y;
+            }
+            return company;
+          })
+        }
+        return newState;
+      }
+      return state;
+    }
   },
   company: {
     reducerName: 'companies',

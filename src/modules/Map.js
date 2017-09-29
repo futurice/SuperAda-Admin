@@ -1,56 +1,55 @@
 import React from 'react';
 import config from 'config';
+import theme from '../utils/theme';
+import MapBlueprint from '../components/MapBlueprint';
+import CompanyList from '../components/CompanyList';
+
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+
+import ReactDOM from 'react-dom';
+
+import {
+  Paper
+} from 'material-ui';
 
 const styles = {
+  container: {
+    margin: theme.spacing.desktopGutter,
+    display: 'flex',
+    flex: '0 1 450px',
+    flexDirection: 'row',
+  },
   content: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    flex: '0 1 auto',
   },
-  map: {
-    width: '50%',
-  },
-  logos: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  logo: {
-    width: 32,
-    height: 'auto',
-    paddingVertical: 'auto',
-    paddingRight: 0
-  }
 }
 
 class Map extends React.Component {
   constructor() {
     super();
-    var companies = [];
-    companies.push(1);
-    companies.push(1);
-    companies.push(1);
-    companies.push(1);
-    companies.push(1);
-    this.state = {
-      companies: companies
-    }
+    this.state = {}
+  }
+
+  handleLoaded = () => {
+    console.log('handling image loaded')
+    var rect = ReactDOM.findDOMNode(this.refs.mapBlueprint).getBoundingClientRect();
+    console.log('', rect)
+    this.setState({mapBlueprint: rect})
   }
 
   render() {
-    const { companies } = this.state;
-
     return (
-      <div style={styles.content}> 
-        <img style={styles.map} src={`${config.API_ROOT}/public/map_template.png`}/>
-        <div style={styles.logos}> { 
-          companies.map((company, index) =>
-            <img key={index} style={styles.logo} src={`${config.API_ROOT}/public/company${index+1}.png`}/>
-          )
-        }
+      <Paper style={styles.container}> 
+        <div style={styles.content}>
+          <MapBlueprint ref="mapBlueprint" handleLoaded={this.handleLoaded}/>
+          <CompanyList target={this.state.mapBlueprint}/>
         </div>
-      </div>
+      </Paper>
     );
   }
 }
 
-export default Map;
+export default (DragDropContext(HTML5Backend)(Map))

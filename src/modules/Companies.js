@@ -55,7 +55,6 @@ class Companies extends React.Component {
 
   componentDidMount() {
     const { refresh } = this.props;
-
     refresh();
   }
 

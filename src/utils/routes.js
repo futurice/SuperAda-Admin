@@ -10,6 +10,7 @@ import CompanyIcon from 'material-ui/svg-icons/action/work';
 import FeedbackIcon from 'material-ui/svg-icons/action/feedback';
 import PreferencesIcon from 'material-ui/svg-icons/action/settings';
 import LogoutIcon from 'material-ui/svg-icons/action/exit-to-app';
+import MapIcon from 'material-ui/svg-icons/image/image';
 
 // First route is the index route
 export default [{
@@ -31,7 +32,7 @@ export default [{
   path: '/map',
   name: 'Map',
   component: MapPage,
-  icon: FeedbackIcon
+  icon: MapIcon
 }, {
   path: '/preferences',
   name: 'Preferences',
